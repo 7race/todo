@@ -5,6 +5,8 @@ export const theme: ITheme = {
     lightGrey: '#a3a3a3',
     darkGrey: '#3d3d3d',
     pink: '#ff66ff',
+    green: '#1be009',
+    black: '#000000',
   },
   media: {
     mobile: '(max-width: 768px)',

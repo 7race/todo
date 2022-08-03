@@ -5,6 +5,8 @@ interface ITheme {
     lightGrey: string;
     darkGrey: string;
     pink: string;
+    green: string;
+    black: string;
   };
   media: {
     mobile: string;
