@@ -26,7 +26,8 @@
     "pre-commit": "eslint .",
     "pre-push": "eslint . --max-warnings=0 && craco test -u --watchAll=false",
     "sb": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
