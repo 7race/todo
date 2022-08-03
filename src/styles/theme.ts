@@ -7,6 +7,7 @@ export const theme: ITheme = {
     pink: '#ff66ff',
     green: '#1be009',
     black: '#000000',
+    violet: '#670070',
   },
   media: {
     mobile: '(max-width: 768px)',
