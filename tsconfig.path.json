@@ -8,6 +8,8 @@
       "@atoms/*": ["view/atoms/*"],
       "@molecules": ["view/molecules"],
       "@molecules/*": ["view/molecules/*"],
+      "@organisms": ["view/organisms"],
+      "@organisms/*": ["view/organisms/*"],
       "@pages": ["view/pages"],
       "@pages/*": ["view/pages/*"],
       "@static": ["view/static"],

@@ -8,6 +8,7 @@ module.exports = {
       '@tests-utils': path.resolve(__dirname, 'src/tests-utils'),
       '@atoms': path.resolve(__dirname, 'src/view/atoms'),
       '@molecules': path.resolve(__dirname, 'src/view/molecules'),
+      '@organisms': path.resolve(__dirname, 'src/view/organisms'),
       '@pages': path.resolve(__dirname, 'src/view/pages'),
       '@static': path.resolve(__dirname, 'src/view/static'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
