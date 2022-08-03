@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TypeTaskWrapperProps } from './TypeTasksProps';
+import type { TypeTaskWrapperProps } from './TypeTasksProps';
 
 export const TypeTasks = styled.div`
   width: 230px;
@@ -12,4 +12,5 @@ export const TypeTaskWrapper = styled.div<TypeTaskWrapperProps>`
   border-color: ${({ theme }) => theme.colors.violet};
   padding: 5px;
   border-radius: 8px;
+  cursor: pointer;
 `;

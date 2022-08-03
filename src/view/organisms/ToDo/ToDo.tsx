@@ -1,7 +1,9 @@
 import { Input } from '@atoms/Input';
+import { BottomLine } from '@organisms/BottomLine';
 import { TaskLine } from '@organisms/TaskLine';
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
+import { useAppSelector } from '@redux/hooks';
 
 type Task = {
   id: string;
@@ -14,6 +16,8 @@ export const ToDo = () => {
   const [allTasks, setAllTasks] = useState<Task[]>([]);
   const [todoTasks, setTodoTasks] = useState<Task[]>([]);
   const [doneTasks, setDoneTasks] = useState<Task[]>([]);
+
+  const { active } = useAppSelector((state) => state.activeTasks);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -47,16 +51,46 @@ export const ToDo = () => {
     }
   };
 
+  const switchActvieTasks = () => {
+    switch (active) {
+      case 'all':
+        return (
+          <ul>
+            {allTasks.map(({ id, text, isDone }) => (
+              <li key={id} onClick={(e) => clickTask(e, id, text, isDone)}>
+                <TaskLine isDone={isDone}>{text}</TaskLine>
+              </li>
+            ))}
+          </ul>
+        );
+      case 'todo':
+        return (
+          <ul>
+            {todoTasks.map(({ id, text, isDone }) => (
+              <li key={id}>
+                <TaskLine isDone={isDone}>{text}</TaskLine>
+              </li>
+            ))}
+          </ul>
+        );
+      case 'done':
+        return (
+          <ul>
+            {doneTasks.map(({ id, text, isDone }) => (
+              <li key={id}>
+                <TaskLine isDone={isDone}>{text}</TaskLine>
+              </li>
+            ))}
+          </ul>
+        );
+    }
+  };
+
   return (
     <div>
       <Input onKeyDown={createTask} value={value} onChange={onChange} placeholder='What need to be done?' />
-      <ul>
-        {allTasks.map((task) => (
-          <li key={task.id} onClick={(e) => clickTask(e, task.id, task.text, task.isDone)}>
-            <TaskLine isDone={task.isDone}>{task.text}</TaskLine>
-          </li>
-        ))}
-      </ul>
+      {switchActvieTasks()}
+      <BottomLine todoCount={1} active='all' />
     </div>
   );
 };

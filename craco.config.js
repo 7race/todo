@@ -12,6 +12,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/view/pages'),
       '@static': path.resolve(__dirname, 'src/view/static'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@redux': path.resolve(__dirname, 'src/redux'),
     },
   },
   jest: {

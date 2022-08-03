@@ -12,6 +12,6 @@ export default {
   },
 } as ComponentMeta<typeof TypeTasks>;
 
-const Template: ComponentStory<typeof TypeTasks> = (args) => <TypeTasks {...args} />;
+const Template: ComponentStory<typeof TypeTasks> = () => <TypeTasks />;
 
 export const index = Template.bind({});

@@ -15,7 +15,9 @@
       "@static": ["view/static"],
       "@static/*": ["view/static/*"],
       "@hooks": ["hooks"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@redux": ["redux"],
+      "@redux/*": ["redux/*"]
     }
   }
 }

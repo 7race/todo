@@ -2,6 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/styles/theme';
 import { GlobalStyle } from '../src/styles/global';
+import { Provider } from 'react-redux';
+import { store } from '../src/redux/store';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,9 +17,11 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {Story()}
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {Story()}
+      </ThemeProvider>
+    </Provider>
   ),
 ];
