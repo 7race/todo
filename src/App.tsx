@@ -1,3 +1,1 @@
-import { Button } from '@atoms/Button';
-
-export const App = () => <Button>Click</Button>;
+export const App = () => <h1>hey</h1>;

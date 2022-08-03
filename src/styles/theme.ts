@@ -2,8 +2,9 @@ import { ITheme } from '../view/styled';
 
 export const theme: ITheme = {
   colors: {
-    white: '#ffffff',
-    black: '#000000',
+    lightGrey: '#a3a3a3',
+    darkGrey: '#3d3d3d',
+    pink: '#ff66ff',
   },
   media: {
     mobile: '(max-width: 768px)',

@@ -2,8 +2,9 @@ import 'styled-components';
 
 interface ITheme {
   colors: {
-    white: string;
-    black: string;
+    lightGrey: string;
+    darkGrey: string;
+    pink: string;
   };
   media: {
     mobile: string;
