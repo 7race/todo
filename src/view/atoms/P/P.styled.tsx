@@ -1,15 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import type { PProps } from './PProps';
 
-const go = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
-
 const taskLineText = css`
   font-family: 'Quicksand', sans-serif;
   font-size: 40px;
@@ -42,11 +33,10 @@ const variants = {
     &:before {
       content: '';
       position: absolute;
+      width: 100%;
       height: 2px;
       top: 47%;
       background-color: ${({ theme }) => theme.colors.lightGrey};
-
-      animation: ${go} 0.2s ease-in forwards;
     }
   `,
   subText: css`

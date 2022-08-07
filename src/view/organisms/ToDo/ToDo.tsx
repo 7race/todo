@@ -4,6 +4,8 @@ import { TaskLine } from '@organisms/TaskLine';
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
 import { useAppSelector } from '@redux/hooks';
+import { Cross } from '../../../styles/animations';
+import * as S from './ToDo.styled';
 
 type Task = {
   id: string;
@@ -55,13 +57,16 @@ export const ToDo = () => {
     switch (active) {
       case 'all':
         return (
-          <ul>
-            {allTasks.map(({ id, text, isDone }) => (
-              <li key={id} onClick={(e) => clickTask(e, id, text, isDone)}>
-                <TaskLine isDone={isDone}>{text}</TaskLine>
-              </li>
-            ))}
-          </ul>
+          <>
+            <Input onKeyDown={createTask} value={value} onChange={onChange} placeholder='What need to be done?' />
+            <ul>
+              {allTasks.map(({ id, text, isDone }) => (
+                <li key={id} onClick={(e) => clickTask(e, id, text, isDone)} style={{ cursor: 'pointer' }}>
+                  <TaskLine isDone={isDone}>{text}</TaskLine>
+                </li>
+              ))}
+            </ul>
+          </>
         );
       case 'todo':
         return (
@@ -88,9 +93,13 @@ export const ToDo = () => {
 
   return (
     <div>
-      <Input onKeyDown={createTask} value={value} onChange={onChange} placeholder='What need to be done?' />
-      {switchActvieTasks()}
+      <S.ToDo>{switchActvieTasks()}</S.ToDo>
       <BottomLine todoCount={1} active='all' />
     </div>
   );
 };
+
+// todo
+// animation cross
+// tasks appear in start
+// nice clear complete with briez
