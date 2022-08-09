@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { activeTasksReducer } from './slices/ActiveTasks';
+import { TasksReducer } from './slices/Tasks';
 
 export const store = configureStore({
-  reducer: { activeTasks: activeTasksReducer },
+  reducer: { Tasks: TasksReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

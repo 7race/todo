@@ -1,55 +1,28 @@
 import { Input } from '@atoms/Input';
-import { BottomLine } from '@organisms/BottomLine';
-import { TaskLine } from '@organisms/TaskLine';
-import React, { useState } from 'react';
-import uniqid from 'uniqid';
-import { useAppSelector } from '@redux/hooks';
-import { Cross } from '../../../styles/animations';
+import { AllTasks } from '@organisms/Tasks/AllTasks/AllTasks';
+import { DoneTasks } from '@organisms/Tasks/DoneTasks/DoneTasks';
+import { TodoTasks } from '@organisms/Tasks/TodoTasks/TodoTasks';
+import { useAppSelector, useAppDispatch } from '@redux/hooks';
+import { useState } from 'react';
+import { clearDoneTasks, createNewTask } from '@redux/slices/Tasks';
+import { P } from '@atoms/P';
+import { TypeTasks } from '@molecules/TypeTasks';
 import * as S from './ToDo.styled';
 
-type Task = {
-  id: string;
-  text: string;
-  isDone: boolean;
-};
-
 export const ToDo = () => {
+  const { todoTasks, active } = useAppSelector((state) => state.Tasks);
+  const dispatch = useAppDispatch();
   const [value, setValue] = useState('');
-  const [allTasks, setAllTasks] = useState<Task[]>([]);
-  const [todoTasks, setTodoTasks] = useState<Task[]>([]);
-  const [doneTasks, setDoneTasks] = useState<Task[]>([]);
-
-  const { active } = useAppSelector((state) => state.activeTasks);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const createTask = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (value === '') return;
-    const id = uniqid();
     if (e.key === 'Enter') {
-      setAllTasks((prev) => [...prev, { id, text: value, isDone: false }]);
-      setTodoTasks((prev) => [...prev, { id, text: value, isDone: false }]);
+      dispatch(createNewTask({ value }));
       setValue('');
-    }
-  };
-
-  const clickTask = (e: React.MouseEvent<HTMLLIElement>, id: string, text: string, isDone: boolean) => {
-    if (!isDone) {
-      const all = allTasks.map((task) => (task.id === id ? { id, text, isDone: true } : task));
-      const todo = todoTasks.filter((task) => task.id !== id);
-
-      setAllTasks(all);
-      setTodoTasks(todo);
-      setDoneTasks((prev) => [...prev, { id, text, isDone: true }]);
-    } else {
-      const all = allTasks.map((task) => (task.id === id ? { id, text, isDone: false } : task));
-      const done = doneTasks.filter((task) => task.id !== id);
-
-      setAllTasks(all);
-      setTodoTasks((prev) => [...prev, { id, text, isDone: false }]);
-      setDoneTasks(done);
     }
   };
 
@@ -57,49 +30,30 @@ export const ToDo = () => {
     switch (active) {
       case 'all':
         return (
-          <>
-            <Input onKeyDown={createTask} value={value} onChange={onChange} placeholder='What need to be done?' />
-            <ul>
-              {allTasks.map(({ id, text, isDone }) => (
-                <li key={id} onClick={(e) => clickTask(e, id, text, isDone)} style={{ cursor: 'pointer' }}>
-                  <TaskLine isDone={isDone}>{text}</TaskLine>
-                </li>
-              ))}
-            </ul>
-          </>
+          <div style={{ maxWidth: '100%', overflowX: 'hidden' }}>
+            <Input onKeyDown={onKeyDownHandler} value={value} onChange={onChange} placeholder='What need to be done?' />
+            <AllTasks />
+          </div>
         );
       case 'todo':
-        return (
-          <ul>
-            {todoTasks.map(({ id, text, isDone }) => (
-              <li key={id}>
-                <TaskLine isDone={isDone}>{text}</TaskLine>
-              </li>
-            ))}
-          </ul>
-        );
+        return <TodoTasks />;
       case 'done':
-        return (
-          <ul>
-            {doneTasks.map(({ id, text, isDone }) => (
-              <li key={id}>
-                <TaskLine isDone={isDone}>{text}</TaskLine>
-              </li>
-            ))}
-          </ul>
-        );
+        return <DoneTasks />;
     }
   };
 
   return (
-    <div>
-      <S.ToDo>{switchActvieTasks()}</S.ToDo>
-      <BottomLine todoCount={1} active='all' />
-    </div>
+    <S.ToDo>
+      <S.TasksList>{switchActvieTasks()}</S.TasksList>
+      <S.BottomLine>
+        <P variant='subText'>{todoTasks.length} items</P>
+        <TypeTasks />
+        <S.ClearBtn>
+          <P variant='subText' onClick={() => dispatch(clearDoneTasks())}>
+            Clear completed
+          </P>
+        </S.ClearBtn>
+      </S.BottomLine>
+    </S.ToDo>
   );
 };
-
-// todo
-// animation cross
-// tasks appear in start
-// nice clear complete with briez

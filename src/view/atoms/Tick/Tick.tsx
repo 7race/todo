@@ -1,3 +1,4 @@
 import tick from '@static/tick.svg';
+import * as S from './Tick.styled';
 
-export const Tick = () => <img src={tick} alt='' width={20} height={20} style={{ userSelect: 'none' }} />;
+export const Tick = () => <S.Tick src={tick} alt='' />;

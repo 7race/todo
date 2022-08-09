@@ -1,10 +1,10 @@
 import { P } from '@atoms/P';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { changeActiveStatus } from '@redux/slices/ActiveTasks';
+import { changeActiveStatus } from '@redux/slices/Tasks';
 import * as S from './TypeTasks.styled';
 
 export const TypeTasks = () => {
-  const { active } = useAppSelector((state) => state.activeTasks);
+  const { active } = useAppSelector((state) => state.Tasks);
   const dispatch = useAppDispatch();
 
   return (

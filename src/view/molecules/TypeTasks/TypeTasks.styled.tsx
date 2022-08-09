@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import type { TypeTaskWrapperProps } from './TypeTasksProps';
 
 export const TypeTasks = styled.div`
-  width: 230px;
+  width: 150px;
+  margin: 2px;
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 301px;
+    justify-content: space-between;
+  }
 `;
 
 export const TypeTaskWrapper = styled.div<TypeTaskWrapperProps>`

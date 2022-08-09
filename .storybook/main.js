@@ -23,6 +23,7 @@ module.exports = {
       '@static': path.resolve(__dirname, '../src/view/static'),
       '@hooks': path.resolve(__dirname, '../src/hooks'),
       '@redux': path.resolve(__dirname, '../src/redux'),
+      '@styles': path.resolve(__dirname, '../src/styles'),
     };
     return config;
   },

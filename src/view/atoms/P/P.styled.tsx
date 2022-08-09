@@ -1,13 +1,16 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import type { PProps } from './PProps';
 
 const taskLineText = css`
   font-family: 'Quicksand', sans-serif;
-  font-size: 40px;
+  font-size: 20px;
   font-weight: lighter;
   display: inline-block;
-  @media ${({ theme }) => theme.media.notebook} {
-    font-size: 50px;
+  word-wrap: break-word;
+  width: 75vw;
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: 35px;
+    width: 85vw;
   }
 `;
 
@@ -28,20 +31,23 @@ const variants = {
     ${taskLineText}
 
     color: ${({ theme }) => theme.colors.lightGrey};
-    position: relative;
 
-    &:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      top: 47%;
-      background-color: ${({ theme }) => theme.colors.lightGrey};
+    & span {
+      background-image: linear-gradient(to bottom, transparent 20%, ${({ theme }) => theme.colors.lightGrey} 21%);
+      background-repeat: no-repeat;
+      background-size: 100% 4px;
+      transition-delay: 0s;
+      background-position: 0 0.5em;
     }
   `,
   subText: css`
-    font-size: 20px;
+    font-size: 12px;
     color: ${({ theme }) => theme.colors.darkGrey};
+    text-align: center;
+
+    @media ${({ theme }) => theme.media.tablet} {
+      font-size: 20px;
+    }
   `,
 };
 

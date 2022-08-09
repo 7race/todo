@@ -8,6 +8,7 @@ export const theme: ITheme = {
     green: '#1be009',
     black: '#000000',
     violet: '#670070',
+    lightBlue: '#b8eaff',
   },
   media: {
     mobile: '(max-width: 768px)',

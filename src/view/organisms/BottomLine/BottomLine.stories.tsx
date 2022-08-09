@@ -11,6 +11,5 @@ const Template: ComponentStory<typeof BottomLine> = (args) => <BottomLine {...ar
 export const index = Template.bind({});
 
 index.args = {
-  active: 'all',
   todoCount: 0,
 };

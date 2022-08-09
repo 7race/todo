@@ -17,7 +17,9 @@
       "@hooks": ["hooks"],
       "@hooks/*": ["hooks/*"],
       "@redux": ["redux"],
-      "@redux/*": ["redux/*"]
+      "@redux/*": ["redux/*"],
+      "@styles": ["styles"],
+      "@styles/*": ["styles/*"]
     }
   }
 }
