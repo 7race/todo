@@ -6,6 +6,7 @@ export const TickField = styled.div<TickFieldProps>`
   height: 15px;
   border: 2px solid ${({ done, theme }) => (done ? theme.colors.green : theme.colors.black)};
   border-radius: 50%;
+  flex-shrink: 0;
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 27px;

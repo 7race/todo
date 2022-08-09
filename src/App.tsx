@@ -1,1 +1,3 @@
-export const App = () => <h1>hey</h1>;
+import { Main } from '@pages/Main';
+
+export const App = () => <Main />;

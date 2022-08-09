@@ -4,8 +4,12 @@ export const ToDo = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.lightGrey};
   border-radius: 8px;
   padding: 7px;
+  background-color: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
     inset 0 0 40px rgba(0, 0, 0, 0.1);
+
+  max-width: 1200px;
+  width: 100%;
 `;
 
 export const TasksList = styled.div`

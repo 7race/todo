@@ -5,5 +5,5 @@ export const TaskLine = styled.div`
   padding: 5px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 `;
